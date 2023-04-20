@@ -25,6 +25,10 @@ def es_vocal_if_in(letra: str) -> bool:
     """Re-escribir utilizando un sólo IF y el operador IN.
     Referencia: https://docs.python.org/3/reference/expressions.html#membership-test-operations
     """
+    vocales = [a, e, i, o, u]
+    if letra.lower() in vocales:
+        return True
+    else: return False
     pass # Completar
 
 
