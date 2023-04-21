@@ -10,7 +10,15 @@ def suma_cubo_pares_for(numeros: Iterable[int]) -> int:
     Restricción: Utilizar dos bucles for, uno para elevar al cubo y otro para
     separar los pares.
     """
-    pass # Completar
+  cubos=[]
+  for i in numeros:
+    cubos.append(i ** 3)
+  suma=0
+  for i in cubos:
+    if i%2 == 0:
+      suma += i
+  return suma
+
 
 
 # NO MODIFICAR - INICIO
@@ -28,7 +36,7 @@ def suma_cubo_pares_sum_list(numeros: Iterable[int]) -> int:
     Referencia: https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions
     Referencia: https://docs.python.org/3/library/functions.html#sum
     """
-    pass # Completar
+  return sum(i for i in [x**3 for x in numeros] if i % 2 == 0)
 
 
 # NO MODIFICAR - INICIO
