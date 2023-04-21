@@ -9,7 +9,11 @@ def superposicion_basico(lista_1: Iterable[Any], lista_2: Iterable[Any]) -> bool
 
     Restricción: Utilizar bucles anidados.
     """
-    pass # Completar
+    for l1 in lista_1:
+      for l2 in lista_1:
+        if l1 == l2:
+          return True
+    return False
 
 
 # NO MODIFICAR - INICIO
@@ -41,7 +45,10 @@ def superposicion_any(lista_1: Iterable[Any], lista_2: Iterable[Any]) -> bool:
     """Re-Escribir utilizando sin bucles, el operador in y la funcion any.
     Referencia: https://docs.python.org/3/library/functions.html#any
     """
-    pass # Completar
+
+ if any(lista_1) == any(lista_2):
+   return True
+ return False
 
 
 # NO MODIFICAR - INICIO
@@ -58,7 +65,11 @@ def superposicion_set(lista_1: Iterable[Any], lista_2: Iterable[Any]) -> bool:
     """Re-Escribir utilizando conjuntos (sets).
     Referencia: https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset
     """
-    pass # Completar
+  l1 = set(lista_1)
+  l2 = set(lista_2)
+  if l1.isdisjoint(l2):
+    return False
+  return True
 
 
 # NO MODIFICAR - INICIO
