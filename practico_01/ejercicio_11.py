@@ -53,7 +53,7 @@ def suma_cubo_pares_sum_gen(numeros: Iterable[int]) -> int:
     Referencia: https://docs.python.org/3/reference/expressions.html#generator-expressions
     """
     pass # Completar
-
+    yield sum(i for i in [x ** 3 for x in numeros] if i % 2 == 0)
 
 # NO MODIFICAR - INICIO
 assert suma_cubo_pares_sum_gen([1, 2, 3, 4, 5, 6]) == 288
