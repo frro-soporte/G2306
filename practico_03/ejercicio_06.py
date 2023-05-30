@@ -4,52 +4,55 @@ from __future__ import annotations
 from typing import List
 
 
-# NO MODIFICAR - INICIO
 class Article:
-    """Agregar los métodos que sean necesarios para que los test funcionen.
-    Hint: los métodos necesarios son todos magic methods
-    Referencia: https://docs.python.org/3/reference/datamodel.html#basic-customization
-    """
-
     def __init__(self, name: str) -> None:
         self.name = name
 
-    # NO MODIFICAR - FIN
+    def __str__(self) -> str:
+        return self.name
 
-    # Completar
+    def __repr__(self) -> str:
+        return f"Article('{self.name}')"
+
+    def __eq__(self, other: Article) -> bool:
+        if isinstance(other, Article):
+            return self.name == other.name
+        return False
+
+    def __hash__(self) -> int:
+        return hash(self.name)
 
 
-# NO MODIFICAR - INICIO
 class ShoppingCart:
-    """Agregar los métodos que sean necesarios para que los test funcionen.
-    Hint: los métodos necesarios son todos magic methods
-    Referencia: https://docs.python.org/3/reference/datamodel.html#basic-customization
-    """
-
     def __init__(self, articles: List[Article] = None) -> None:
         if articles is None:
             self.articles = []
         else:
             self.articles = articles
 
+    def __str__(self) -> str:
+        return str([str(article) for article in self.articles])
+
+    def __repr__(self) -> str:
+        return f"ShoppingCart({repr(self.articles)})"
+
+    def __eq__(self, other: ShoppingCart) -> bool:
+        if isinstance(other, ShoppingCart):
+            return set(self.articles) == set(other.articles)
+        return False
+
     def add(self, article: Article) -> ShoppingCart:
         self.articles.append(article)
         return self
 
     def remove(self, remove_article: Article) -> ShoppingCart:
-        new_articles = []
-
-        for article in self.articles:
-            if article != remove_article:
-                new_articles.append(article)
-
-        self.articles = new_articles
-
+        self.articles = [article for article in self.articles if article != remove_article]
         return self
 
-    # NO MODIFICAR - FIN
-
-    # Completar
+    def __add__(self, other: ShoppingCart) -> ShoppingCart:
+        if isinstance(other, ShoppingCart):
+            return ShoppingCart(self.articles + other.articles)
+        return NotImplemented
 
 
 # NO MODIFICAR - INICIO
