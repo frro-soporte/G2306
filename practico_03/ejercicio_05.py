@@ -1,18 +1,7 @@
 """Propiedades"""
 
 
-class Auto:
-    """La clase auto tiene dos propiedades, precio y marca. La marca se define
-    obligatoriamente al construir la clase y siempre que se devuelve, se 
-    devuelve con la primer letra en mayúscula y no se puede modificar. El precio
-    puede modificarse pero cuando se muestra, se redondea a 2 decimales
-    
-    Restricción: Usar Properties
-    
-    Referencia: https://docs.python.org/3/library/functions.html#property"""
-
-    # Completar
-    from re import M
+from re import M
 class Auto:
     """La clase auto tiene dos propiedades, precio y marca. La marca se define
     obligatoriamente al construir la clase y siempre que se devuelve, se 
