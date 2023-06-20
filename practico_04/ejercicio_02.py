@@ -1,13 +1,20 @@
 """Base de Datos SQL - Alta"""
 
 import datetime
-from practico_04.ejercicio_01 import reset_tabla
+#from practico_04.ejercicio_01 import reset_tabla
 
+con = sqlite3.connect(':memory:')  # Create a global connection object
 
 def agregar_persona(nombre, nacimiento, dni, altura):
-    """Implementar la funcion agregar_persona, que inserte un registro en la 
-    tabla Persona y devuelva los datos ingresados el id del nuevo registro."""
-    pass # Completar
+    """Implement the agregar_persona function, which inserts a record into the
+    persona table and returns the id of the new record."""
+    c = con.cursor()
+    data = (nombre, nacimiento, dni, altura)
+    statement = "INSERT INTO persona (nombre, fecha_nacimiento, dni, altura) VALUES (?, ?, ?, ?)"
+    c.execute(statement, data)
+    con.commit()
+    return c.lastrowid
+
 
 
 # NO MODIFICAR - INICIO
