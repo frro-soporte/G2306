@@ -2,9 +2,9 @@
 
 
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Sequence, ForeignKey, orm
 
-Base = declarative_base()
+Base = orm.declarative_base()
 
 class Socio(Base):
     """Implementar un modelo Socio a traves de Alchemy que cuente con los siguientes campos:
@@ -13,6 +13,10 @@ class Socio(Base):
         - nombre: string (longitud 250)
         - apellido: string (longitud 250)
     """
+    id_socio = Column(Integer, Sequence('socio_seq_id'), primary_key=True)
+    dni = Column(Integer, unique = True)
+    nombre = Column(String(length= 250))
+    apellido = Column(String(length= 250))
     __tablename__ = 'socios'
 
     # Completar
