@@ -1,22 +1,22 @@
-"""Base de datos SQL - Listar"""
-
 import datetime
-
-from practico_04.ejercicio_02 import agregar_persona
-from practico_04.ejercicio_06 import reset_tabla
-from practico_04.ejercicio_07 import agregar_peso
-
+from soporte.practico_04.ejercicio_01 import borrar_tabla, crear_tabla
+import datetime
+from soporte.practico_04.ejercicio_04 import buscar_persona
+from soporte.practico_04.ejercicio_01 import con
+from soporte.practico_04.ejercicio_02 import agregar_persona
+from soporte.practico_04.ejercicio_06 import reset_tabla
+from soporte.practico_04.ejercicio_07 import agregar_peso
 
 def listar_pesos(id_persona):
-    """Implementar la funcion listar_pesos, que devuelva el historial de pesos 
+    """Implementar la funcion listar_pesos, que devuelva el historial de pesos
     para una persona dada.
 
     Debe validar:
-    - Que el ID de la persona ingresada existe (reutilizando las funciones ya 
+    - Que el ID de la persona ingresada existe (reutilizando las funciones ya
      mplementadas).
 
     Debe devolver:
-    - Lista de (fecha, peso), donde fecha esta representado por el siguiente 
+    - Lista de (fecha, peso), donde fecha esta representado por el siguiente
     formato: AAAA-MM-DD.
 
     Ejemplo:
@@ -30,8 +30,16 @@ def listar_pesos(id_persona):
 
     - False en caso de no cumplir con alguna validacion.
     """
-    return []
-
+    if buscar_persona(id_persona):
+        c = con.cursor()
+        data = (id_persona,)
+        statement = "SELECT pp.fecha, pp.peso FROM persona p INNER JOIN persona_peso pp ON p.idPersona = pp.idPersona WHERE p.idPersona = ?"
+        c.execute(statement, data)
+        con.commit()
+        pesos = c.fetchall()
+        print(pesos)
+        return pesos
+    else: return False
 
 # NO MODIFICAR - INICIO
 @reset_tabla
