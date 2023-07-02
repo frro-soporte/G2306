@@ -3,11 +3,10 @@
 import datetime
 #from practico_04.ejercicio_01 import reset_tabla
 
-con = sqlite3.connect(':memory:')  # Create a global connection object
+con = sqlite3.connect(':memory:') 
 
 def agregar_persona(nombre, nacimiento, dni, altura):
-    """Implement the agregar_persona function, which inserts a record into the
-    persona table and returns the id of the new record."""
+
     c = con.cursor()
     data = (nombre, nacimiento, dni, altura)
     statement = "INSERT INTO persona (nombre, fecha_nacimiento, dni, altura) VALUES (?, ?, ?, ?)"
